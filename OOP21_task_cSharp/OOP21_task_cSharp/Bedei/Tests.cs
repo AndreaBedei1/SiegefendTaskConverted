@@ -6,6 +6,7 @@ namespace OOP21_task_cSharp.Bedei
     [TestClass]
     public class Tests
     {
+        private List<IEnemy> _enemyList = new List<IEnemy>();
 
         [TestMethod]
         public void TestPosition()
@@ -30,5 +31,21 @@ namespace OOP21_task_cSharp.Bedei
             Assert.AreEqual(pair, Pair<int, int>.From(0, 0));
         }
 
+        [TestMethod]
+        public void TestEnemy()
+        {
+            IEnemy enemy = new EnemyImpl(new Position(0, 0), 1.0, 1.0, 1.0, EnemyType.TANK);
+            Assert.AreEqual(enemy.EnemyType, EnemyType.TANK);
+            Assert.AreEqual(enemy.Steps, 0.0);
+            Assert.AreEqual(enemy.Speed, 1.0);
+            Assert.AreEqual(enemy.Reward, 1.0);
+            Assert.AreEqual(enemy.HP, 1.0);
+            Assert.AreEqual(enemy.Position, new Position(0, 0));
+            enemy.Move(1.0, 1.0);
+            Assert.AreEqual(enemy.Steps, 1.0);
+            Assert.AreEqual(enemy.Position, new Position(1, 1));
+            enemy.DamageSuffered(0.5);
+            Assert.AreEqual(enemy.HP, 0.5);
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace OOP21_task_cSharp.Bedei
             Y = y;
         }
 
-        public static Pair<A, B> From(A x, B y) => new Pair<A, B>(x, y);
+        public static Pair<A, B> From(A x, B y) => new(x, y);
 
         public override bool Equals(object? obj) => obj is Pair<A, B> pair && EqualityComparer<A>.Default.Equals(X, pair.X) && EqualityComparer<B>.Default.Equals(Y, pair.Y);
 

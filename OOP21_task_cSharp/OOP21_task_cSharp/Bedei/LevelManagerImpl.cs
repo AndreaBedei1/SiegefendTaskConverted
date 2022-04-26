@@ -7,17 +7,17 @@ namespace OOP21_task_cSharp.Bedei
     {
         private readonly ILevel _level;
         private readonly IEnumerator<IWave> _waveIter;
-        private IEnumerator<IEnemy> _enemyIter;
-        private IWave? _currentWave = null; 
+        private IEnumerator<IEnemy>? _enemyIter;
+        private IWave? _currentWave = null;
 
         public LevelManagerImpl(ILevel level)
         {
             _level = level;
             _waveIter = level.Waves.GetEnumerator();
-            loadWave();
+            LoadWave();
         }
 
-        private void loadWave()
+        private void LoadWave()
         {
             if (_waveIter.MoveNext())
             {
@@ -34,14 +34,12 @@ namespace OOP21_task_cSharp.Bedei
 
         public ILevel CurrentLevel => _level;
 
-        public IWave CurrentWave => _currentWave is null ? throw new Exception() : _currentWave;
+        public IWave CurrentWave => _currentWave is null ? throw new NullReferenceException() : _currentWave;
 
-        public bool hasNextWave => _waveIter.MoveNext();
+        public bool HasNextWave => _waveIter.MoveNext();
 
-        public IEnemy? CurrentEnemy => _enemyIter.Current;
+        public IEnemy? CurrentEnemy => _enemyIter is not null ? _enemyIter.Current : throw new NullReferenceException();
 
-        public bool hasNextEnemy => _enemyIter.MoveNext();
-
-        public void nextWave() => loadWave();
+        public bool HasNextEnemy => _enemyIter is not null ? _enemyIter.MoveNext() : throw new NullReferenceException();
     }
 }

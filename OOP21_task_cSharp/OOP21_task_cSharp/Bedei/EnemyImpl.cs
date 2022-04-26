@@ -14,7 +14,7 @@ namespace OOP21_task_cSharp.Bedei
         private double _hp;
         private readonly double _maxHp;
         private readonly double _reward;
-        private double _speed;
+        private readonly double _speed;
         private readonly Semaphore _enemySemaphore;
         private readonly EnemyType _enemyType;
 
@@ -51,23 +51,23 @@ namespace OOP21_task_cSharp.Bedei
             _reward = reward;
             _speed = speed;
             _enemyType = enemyType;
-            _enemySemaphore = new Semaphore(1,1);
+            _enemySemaphore = new Semaphore(1, 1);
         }
-        
+
         public void Move(double x, double y)
         {
             _position?.SetCoordinates(x, y);
             _stepsDone++;
         }
 
-        public void damageSuffered(double damage)
+        public void DamageSuffered(double damage)
         {
             _enemySemaphore?.WaitOne();
             _hp -= damage;
             _enemySemaphore?.Release();
         }
 
-        public override bool Equals(object? obj) => obj is EnemyImpl impl && 
+        public override bool Equals(object? obj) => obj is EnemyImpl impl &&
             EqualityComparer<Position>.Default.Equals(_position, impl._position) && _enemyType == impl._enemyType;
 
         public override int GetHashCode() => HashCode.Combine(_position, _enemyType);

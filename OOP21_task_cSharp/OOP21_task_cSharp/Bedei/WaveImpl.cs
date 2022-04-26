@@ -6,7 +6,7 @@ namespace OOP21_task_cSharp.Bedei
     {
         private readonly List<IEnemy> _wave;
         List<IEnemy> IWave.EnemyList => _wave;
-    
+
         public WaveImpl(List<IEnemy> wave) => _wave = wave;
     }
 }

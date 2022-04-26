@@ -27,7 +27,7 @@ namespace OOP21_task_cSharp.Bedei
         /// <summary>
         /// Checks if there is a next ave in the level.
         /// </summary>
-        public bool hasNextWave { get; }
+        public bool HasNextWave { get; }
 
         /// <summary>
         /// riggers the spawning of a new Enemy, using the informations in the current Wave.
@@ -37,11 +37,6 @@ namespace OOP21_task_cSharp.Bedei
         /// <summary>
         /// Checks if there is a following Wave in the Level.
         /// </summary>
-        public bool hasNextEnemy { get; }
-
-        /// <summary>
-        /// Checks if there is a following Wave and sets it as active.
-        /// </summary>
-        public void nextWave();
+        public bool HasNextEnemy { get; }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-
-namespace OOP21_task_cSharp.Bedei
-{ 
+﻿namespace OOP21_task_cSharp.Bedei
+{
     /// <summary>
     /// Represents an enemy that can spawn on the map.
     /// </summary>
@@ -17,7 +15,7 @@ namespace OOP21_task_cSharp.Bedei
         /// </summary>
         /// <returns>The percentage of enemy Life.</returns>
         public double PercentHp { get; }
-        
+
         /// <summary>
         ///  Steps done by one enemy.
         /// </summary>
@@ -59,6 +57,6 @@ namespace OOP21_task_cSharp.Bedei
         /// Method that decrees the enemy life. 
         /// </summary>
         /// <param name="damage">Is the damage that the enemy has recived.</param>
-        public void damageSuffered(double damage);
+        public void DamageSuffered(double damage);
     }
 }

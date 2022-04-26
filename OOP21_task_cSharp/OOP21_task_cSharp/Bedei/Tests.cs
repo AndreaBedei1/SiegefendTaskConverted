@@ -33,7 +33,7 @@ namespace OOP21_task_cSharp.Bedei
         [TestMethod]
         public void TestEnemy()
         {
-            
+
             Assert.AreEqual(_enemy.EnemyType, EnemyType.TANK);
             Assert.AreEqual(_enemy.Steps, 0.0);
             Assert.AreEqual(_enemy.Speed, 1.0);
@@ -47,13 +47,28 @@ namespace OOP21_task_cSharp.Bedei
             Assert.AreEqual(_enemy.HP, 0.5);
         }
 
-        [TestMethod]
-        public void TestWave()
+        private IWave WaveCreation()
         {
             List<IEnemy> enemyList = new();
             enemyList.Add(_enemy);
-            IWave wave = new WaveImpl(enemyList);
+            return new WaveImpl(enemyList);
+        }
+
+        [TestMethod]
+        public void TestWave()
+        {
+            IWave wave = WaveCreation();
             Assert.AreEqual(wave.EnemyList.Count, 1);
+        }
+
+        [TestMethod]
+        public void TestLevel()
+        {
+            List<IWave> waveList = new();
+            waveList.Add(WaveCreation());
+            ILevel level = new LevelImpl(waveList, 0);
+            Assert.AreEqual(level.LevelId, 0);
+            Assert.AreEqual(level.NumberOfWaves, 1);
         }
     }
 }

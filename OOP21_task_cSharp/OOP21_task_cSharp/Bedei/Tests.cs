@@ -70,5 +70,23 @@ namespace OOP21_task_cSharp.Bedei
             Assert.AreEqual(level.LevelId, 0);
             Assert.AreEqual(level.NumberOfWaves, 1);
         }
+
+        [TestMethod]
+        public void TestLevelManager()
+        {
+            List<IWave> waveList = new();
+            waveList.Add(WaveCreation());
+            ILevel level = new LevelImpl(waveList, 0);
+            ILevelManager levelManager = new LevelManagerImpl(level);
+            Assert.AreEqual(levelManager.Waves, waveList);
+            Assert.AreEqual(levelManager.TotalWaves, waveList.Count);
+            Assert.AreEqual(levelManager.CurrentLevel, level);
+            Assert.IsFalse(levelManager.HasNextWave);
+            Assert.IsNull(levelManager.CurrentEnemy);
+            Assert.IsTrue(levelManager.HasNextEnemy);
+            Assert.IsNotNull(levelManager.CurrentEnemy);
+            Assert.AreEqual(levelManager.CurrentEnemy, _enemy);
+            Assert.IsFalse(levelManager.HasNextEnemy);
+        }
     }
 }

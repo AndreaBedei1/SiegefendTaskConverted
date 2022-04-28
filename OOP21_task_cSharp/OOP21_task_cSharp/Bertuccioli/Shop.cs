@@ -16,7 +16,7 @@ namespace OOP21_task_cSharp.Bertuccioli
         public bool CanBuy(int tid, IPlayer p)
         {
             CheckNull(p, "player");
-            _turrets.TryGetValue(tid, out ITurret t);
+            _turrets.TryGetValue(tid, out ITurret? t);
             return t != null && p.GetMoney() >= t.GetPrice();
         }
 
@@ -24,7 +24,7 @@ namespace OOP21_task_cSharp.Bertuccioli
         {
             CheckNull(t, "turret");
             CheckNull(p, "player");
-            _turrets.TryGetValue(t.GetID(), out ITurret turret);
+            _turrets.TryGetValue(t.GetID(), out ITurret? turret);
             return t.Equals(turret) && CanBuy(t.GetID(), p);
         }
 

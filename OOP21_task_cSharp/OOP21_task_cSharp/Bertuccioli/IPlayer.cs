@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SiegefendCSProj
+namespace OOP21_task_cSharp.Bertuccioli
 {
     public interface IPlayer
     {

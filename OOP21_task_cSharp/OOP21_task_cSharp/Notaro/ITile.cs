@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a single tile on the Map.
     /// </summary>
-    interface ITile
+    public interface ITile
     {
         /// <summary>
         /// Every tile has a propery that describes its type (grass, path, water...).

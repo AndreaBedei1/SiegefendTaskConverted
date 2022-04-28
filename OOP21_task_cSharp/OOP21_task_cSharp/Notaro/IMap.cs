@@ -5,7 +5,7 @@ namespace OOP21_task_cSharp.Notaro
     /// <summary>
     /// Represents the game map. The map is made as a structure of logical matrix of tiles.
     /// </summary>
-    interface IMap
+    public interface IMap
     {
         /// <summary>
         /// The map has a field that contains the links between every GridPosition and its Tile. This property returns it.

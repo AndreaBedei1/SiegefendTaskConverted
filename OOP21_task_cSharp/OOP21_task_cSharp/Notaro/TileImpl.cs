@@ -3,7 +3,7 @@
     /// <summary>
     /// Class representing the implementation a Map's Tile.
     /// </summary>
-    class TileImpl : ITile
+    public class TileImpl : ITile
     {
         private TileType _tileType; // Type of the tile (grass, water, path...).
         private Direction? _tileDirection;  // Field to be passed to the enemy for its movement.

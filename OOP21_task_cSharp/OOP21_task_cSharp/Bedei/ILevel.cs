@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using OOP21_task_cSharp.Notaro;
+using System.Collections.Generic;
 
 namespace OOP21_task_cSharp.Bedei
 {
@@ -11,6 +12,11 @@ namespace OOP21_task_cSharp.Bedei
         /// Returns a list containing all the waves of enemies in the level.
         /// </summary>
         public List<IWave> Waves { get; }
+
+        /// <summary>
+        /// Get the map of the level.
+        /// </summary>
+        public IMap Map { get; }
 
         /// <summary>
         /// Simple getter for the field that contains the Level ID.

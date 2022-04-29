@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using OOP21_task_cSharp.Notaro;
+using System.Collections.Generic;
 
 namespace OOP21_task_cSharp.Bedei
 {
@@ -8,6 +9,11 @@ namespace OOP21_task_cSharp.Bedei
         /// A list containing all the waves in the level.
         /// </summary>
         public List<IWave> Waves { get; }
+
+        /// <summary>
+        /// The map.
+        /// </summary>
+        public IMap Map { get; }
 
         /// <summary>
         /// The total number of Wave in the Level.

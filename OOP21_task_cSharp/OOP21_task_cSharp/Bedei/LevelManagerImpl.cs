@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOP21_task_cSharp.Notaro;
+using System;
 using System.Collections.Generic;
 
 namespace OOP21_task_cSharp.Bedei
@@ -16,6 +17,7 @@ namespace OOP21_task_cSharp.Bedei
         /// </summary>
 
         private readonly ILevel _level;
+        private readonly IMap _map;
         private readonly IEnumerator<IWave> _waveIter;
         private IEnumerator<IEnemy>? _enemyIter;
         private IWave? _currentWave = null;
@@ -23,6 +25,7 @@ namespace OOP21_task_cSharp.Bedei
         public LevelManagerImpl(ILevel level)
         {
             _level = level;
+            _map = level.Map;
             _waveIter = level.Waves.GetEnumerator();
             LoadWave();
         }
@@ -51,5 +54,7 @@ namespace OOP21_task_cSharp.Bedei
         public IEnemy? CurrentEnemy => _enemyIter is not null ? _enemyIter.Current : throw new NullReferenceException();
 
         public bool NextEnemy => _enemyIter is not null ? _enemyIter.MoveNext() : throw new NullReferenceException();
+
+        public IMap Map => _map;
     }
 }

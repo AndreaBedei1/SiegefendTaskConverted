@@ -3,7 +3,7 @@
     /// <summary>
     /// Describes the various and different types of a Tile in the Map.
     /// </summary>
-    enum TileType
+    public enum TileType
     {
         /// <summary>
         /// This type denotes that the Tile is the beginning of the path, that is the

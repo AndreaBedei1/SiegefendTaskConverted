@@ -5,7 +5,7 @@
     /// <summary>
     /// This enum represents a cardinal direction.
     /// </summary>
-    enum Direction  
+    public enum Direction  
     {
         /// <summary>
         /// Direction up.

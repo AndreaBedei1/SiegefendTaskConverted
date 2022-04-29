@@ -22,12 +22,12 @@ namespace OOP21_task_cSharp.Bedei
         /// <summary>
         /// The current Wave that is being played.
         /// </summary>
-        public IWave CurrentWave { get; }
+        public IWave? CurrentWave { get; }
 
         /// <summary>
         /// Checks if there is a next ave in the level.
         /// </summary>
-        public bool HasNextWave { get; }
+        public bool NextWave { get; }
 
         /// <summary>
         /// riggers the spawning of a new Enemy, using the informations in the current Wave.
@@ -37,6 +37,6 @@ namespace OOP21_task_cSharp.Bedei
         /// <summary>
         /// Checks if there is a following Wave in the Level.
         /// </summary>
-        public bool HasNextEnemy { get; }
+        public bool NextEnemy { get; }
     }
 }

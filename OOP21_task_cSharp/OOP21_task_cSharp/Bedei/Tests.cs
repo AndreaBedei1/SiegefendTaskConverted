@@ -81,12 +81,12 @@ namespace OOP21_task_cSharp.Bedei
             Assert.AreEqual(levelManager.Waves, waveList);
             Assert.AreEqual(levelManager.TotalWaves, waveList.Count);
             Assert.AreEqual(levelManager.CurrentLevel, level);
-            Assert.IsFalse(levelManager.HasNextWave);
+            Assert.IsFalse(levelManager.NextWave);
             Assert.IsNull(levelManager.CurrentEnemy);
-            Assert.IsTrue(levelManager.HasNextEnemy);
+            Assert.IsTrue(levelManager.NextEnemy);
             Assert.IsNotNull(levelManager.CurrentEnemy);
             Assert.AreEqual(levelManager.CurrentEnemy, _enemy);
-            Assert.IsFalse(levelManager.HasNextEnemy);
+            Assert.IsFalse(levelManager.NextEnemy);
         }
     }
 }

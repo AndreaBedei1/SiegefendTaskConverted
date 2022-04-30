@@ -1,6 +1,4 @@
-﻿
-
-using OOP21_task_cSharp.Notaro;
+﻿using OOP21_task_cSharp.Notaro;
 using System;
 using System.Threading;
 
@@ -70,7 +68,25 @@ namespace OOP21_task_cSharp.Bedei
         {
             Position p = _enemy.Position;
             double speed = _enemy.Speed;
-            // TODO FINIRE
+            Pair<int, int> vec = ToUnitVector(dir);
+            _enemy.Move(p.X + vec.X * speed, p.Y + vec.Y * speed);
+        }
+
+        private Pair<int, int> ToUnitVector(Direction? d)
+        {
+            switch (d)
+            {
+                case Direction.Up:
+                    return Pair<int, int>.From(0, -1);
+                case Direction.Right:
+                    return Pair<int, int>.From(1, 0);
+                case Direction.Down:
+                    return Pair<int, int>.From(0, 1);
+                case Direction.Left:
+                    return Pair<int, int>.From(-1, 0);
+                default:
+                    throw new NotSupportedException("Enemy direction not correct");
+            }
         }
 
         private void TakeDirection()

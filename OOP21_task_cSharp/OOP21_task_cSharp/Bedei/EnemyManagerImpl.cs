@@ -1,6 +1,7 @@
 ﻿
 
 using OOP21_task_cSharp.Notaro;
+using System;
 using System.Threading;
 
 namespace OOP21_task_cSharp.Bedei
@@ -11,23 +12,101 @@ namespace OOP21_task_cSharp.Bedei
         private const int IMG_TILE_SIZE = 80;
         private volatile bool _threadRun = true;
         private readonly IEnemy _enemy;
+        private readonly IEnemyController _enemyController;
         private readonly IMap _map;
         private int _stepDone;
         private Direction? _lastDir = null;
         private readonly PositionConverter _converter;
-        private Thread _gameThread;
+        private Thread? _gameThread;
 
+        public IEnemy Enemy => _enemy;
 
-        public IEnemy Enemy => throw new System.NotImplementedException();
+        public EnemyManagerImpl(IEnemy enemy, ILevelManager levelManager, IEnemyController enemyController)
+        {
+            _enemy = enemy;
+            _map = levelManager.Map;
+            _enemyController = enemyController;
+            _converter = new PositionConverter(IMG_TILE_SIZE);
+            StartEnemyThread();
+        }
+
+        private void StartEnemyThread()
+        {
+            if(_gameThread == null)
+            {
+                _gameThread = new Thread(() =>
+                {
+                    while (_threadRun)
+                    {
+                        try
+                        {
+                            CheckLife();
+                            NextMovement();
+                            CheckFinalDestination();
+                            Thread.Sleep(ENEMY_SPEED);
+                        }
+                        catch (ThreadInterruptedException e)
+                        {
+                            if (e.Source != null)
+                                Console.WriteLine("IOException source: {0}", e.Source);
+                        }
+                    }
+                });
+            }
+            _gameThread.Start();
+        }
+
+        private void NextMovement()
+        {
+            if (InitialPart())
+                TakeDirection();
+            _stepDone += (int)_enemy.Speed;
+            if(_stepDone>=IMG_TILE_SIZE)
+                _stepDone = 0;
+            EnemyMovement(_lastDir is null ? throw new NullReferenceException() : _lastDir );
+        }
+
+        private void EnemyMovement(Direction? dir)
+        {
+            Position p = _enemy.Position;
+            double speed = _enemy.Speed;
+            // TODO FINIRE
+        }
+
+        private void TakeDirection()
+        {
+            GridPosition p = _converter.ConvertToGridPosition(_enemy.Position);
+            bool hasValue = _map.Tiles.TryGetValue(p, out ITile? d);
+            if (hasValue)
+                _lastDir = d is not null ? d.TileDirection : null;
+        }
+
+        private bool InitialPart() => _stepDone == 0;
+
+        private void CheckFinalDestination()
+        {
+            double x = _enemy.Position.X;
+            double y = _enemy.Position.Y;
+            if (x == -IMG_TILE_SIZE || y == -IMG_TILE_SIZE || this.EndIntoMap(x) || this.EndIntoMap(y))
+                Disappear();
+        }
+
+        private bool EndIntoMap(double v) => _map.Size * IMG_TILE_SIZE == v;
+
+        private void CheckLife()
+        {
+            if (_enemy.HP <= 0)
+                Disappear();
+        }
 
         public void Disappear()
         {
-            throw new System.NotImplementedException();
+            StopTread();
+            _enemyController.RemoveEnemy(this);
         }
 
-        public void StopTread()
-        {
-            throw new System.NotImplementedException();
-        }
+        public void StopTread() => _threadRun = true;
+
+        public override string ToString() => "EnemyManagerImpl [threadRun=" + _threadRun + ", enemy=" + _enemy + ", lastDir=" + _lastDir + "]";
     }
 }

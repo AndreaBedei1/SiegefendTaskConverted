@@ -5,16 +5,13 @@ namespace OOP21_task_cSharp.Bedei
 {
     public class LevelImpl : ILevel
     {
-        private readonly List<IWave> _waves;
-        private readonly IMap _map;
-        private readonly int _levelID;
-        public List<IWave> Waves => _waves;
+        public List<IWave> Waves { get; }
 
-        public int LevelId => _levelID;
+        public int LevelId { get; }
 
-        public int NumberOfWaves => _waves.Count;
+        public int NumberOfWaves => Waves.Count;
 
-        public IMap Map => _map;
+        public IMap Map { get; }
 
         /// <summary>
         /// Creation of a level.
@@ -23,9 +20,9 @@ namespace OOP21_task_cSharp.Bedei
         /// <param name="levelID">Is the Level ID.</param>
         public LevelImpl(List<IWave> waves, int levelID, IMap map)
         {
-            _waves = waves;
-            _levelID = levelID;
-            _map = map;
+            Waves = waves;
+            LevelId = levelID;
+            Map = map;
         }
     }
 }

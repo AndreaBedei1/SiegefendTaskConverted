@@ -71,22 +71,14 @@ namespace OOP21_task_cSharp.Bedei
             Enemy.Move(p.X + vec.X * speed, p.Y + vec.Y * speed);
         }
 
-        private Pair<int, int> ToUnitVector(Direction? d)
+        private Pair<int, int> ToUnitVector(Direction? d) => d switch
         {
-            switch (d)
-            {
-                case Direction.Up:
-                    return Pair<int, int>.From(0, -1);
-                case Direction.Right:
-                    return Pair<int, int>.From(1, 0);
-                case Direction.Down:
-                    return Pair<int, int>.From(0, 1);
-                case Direction.Left:
-                    return Pair<int, int>.From(-1, 0);
-                default:
-                    throw new NotSupportedException("Enemy direction not correct");
-            }
-        }
+            Direction.Up => Pair<int, int>.From(0, -1),
+            Direction.Right => Pair<int, int>.From(1, 0),
+            Direction.Down => Pair<int, int>.From(0, 1),
+            Direction.Left => Pair<int, int>.From(-1, 0),
+            _ => throw new NotSupportedException("Enemy direction not correct"),
+        };
 
         private void TakeDirection()
         {

@@ -6,26 +6,23 @@ namespace OOP21_task_cSharp.Bedei
 {
     public class LevelManagerImpl : ILevelManager
     {
-        /// <summary>
-        /// It was decided to implement this class slightly differently to highlight the different aspects of C#,
-        /// in particular as regards the iterators, which offer slightly different methods
-        /// for this reason I decided to change the aspects of passing to the new wave and loading the new enemy.
-        /// The changes are visible from code.
-        /// With this mode an empty optional will not be passed (in c# null)
-        /// but just check if when loading a new enemy/wave the next method will return true or false.
-        /// I thought of this as the best way.
-        /// </summary>
-
-        private readonly ILevel _level;
-        private readonly IMap _map;
+        /*
+         * It was decided to implement this class slightly differently to highlight the different aspects of C#,
+         * in particular as regards the iterators, which offer slightly different methods
+         * for this reason I decided to change the aspects of passing to the new wave and loading the new enemy.
+         * The changes are visible from code.
+         * With this mode an empty optional will not be passed (in c# null)
+         * but just check if when loading a new enemy/wave the next method will return true or false.
+         * I thought of this as the best way.
+         */
         private readonly IEnumerator<IWave> _waveIter;
         private IEnumerator<IEnemy>? _enemyIter;
-        private IWave? _currentWave = null;
+        private IWave? _currentWave;
 
         public LevelManagerImpl(ILevel level)
         {
-            _level = level;
-            _map = level.Map;
+            CurrentLevel = level;
+            Map = level.Map;
             _waveIter = level.Waves.GetEnumerator();
             LoadWave();
         }
@@ -41,11 +38,13 @@ namespace OOP21_task_cSharp.Bedei
                 throw new NotImplementedException();
         }
 
-        public List<IWave> Waves => _level.Waves;
+        public IMap Map { get; }
 
-        public int TotalWaves => _level.NumberOfWaves;
+        public ILevel CurrentLevel { get; }
 
-        public ILevel CurrentLevel => _level;
+        public List<IWave> Waves => CurrentLevel.Waves;
+
+        public int TotalWaves => CurrentLevel.NumberOfWaves;
 
         public IWave CurrentWave => _currentWave is null ? throw new NullReferenceException() : _currentWave;
 
@@ -54,7 +53,5 @@ namespace OOP21_task_cSharp.Bedei
         public IEnemy? CurrentEnemy => _enemyIter is not null ? _enemyIter.Current : throw new NullReferenceException();
 
         public bool NextEnemy => _enemyIter is not null ? _enemyIter.MoveNext() : throw new NullReferenceException();
-
-        public IMap Map => _map;
     }
 }

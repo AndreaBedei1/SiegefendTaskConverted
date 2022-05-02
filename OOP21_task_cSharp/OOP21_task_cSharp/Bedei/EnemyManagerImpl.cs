@@ -9,19 +9,18 @@ namespace OOP21_task_cSharp.Bedei
         private const int ENEMY_SPEED = 8;
         private const int IMG_TILE_SIZE = 80;
         private volatile bool _threadRun = true;
-        private readonly IEnemy _enemy;
         private readonly IEnemyController _enemyController;
         private readonly IMap _map;
         private int _stepDone;
-        private Direction? _lastDir = null;
+        private Direction? _lastDir;
         private readonly PositionConverter _converter;
         private Thread? _gameThread;
 
-        public IEnemy Enemy => _enemy;
+        public IEnemy Enemy { get; }
 
         public EnemyManagerImpl(IEnemy enemy, ILevelManager levelManager, IEnemyController enemyController)
         {
-            _enemy = enemy;
+            Enemy = enemy;
             _map = levelManager.Map;
             _enemyController = enemyController;
             _converter = new PositionConverter(IMG_TILE_SIZE);
@@ -58,7 +57,7 @@ namespace OOP21_task_cSharp.Bedei
         {
             if (InitialPart())
                 TakeDirection();
-            _stepDone += (int)_enemy.Speed;
+            _stepDone += (int)Enemy.Speed;
             if(_stepDone>=IMG_TILE_SIZE)
                 _stepDone = 0;
             EnemyMovement(_lastDir is null ? throw new NullReferenceException() : _lastDir );
@@ -66,10 +65,10 @@ namespace OOP21_task_cSharp.Bedei
 
         private void EnemyMovement(Direction? dir)
         {
-            Position p = _enemy.Position;
-            double speed = _enemy.Speed;
+            Position p = Enemy.Position;
+            double speed = Enemy.Speed;
             Pair<int, int> vec = ToUnitVector(dir);
-            _enemy.Move(p.X + vec.X * speed, p.Y + vec.Y * speed);
+            Enemy.Move(p.X + vec.X * speed, p.Y + vec.Y * speed);
         }
 
         private Pair<int, int> ToUnitVector(Direction? d)
@@ -91,7 +90,7 @@ namespace OOP21_task_cSharp.Bedei
 
         private void TakeDirection()
         {
-            GridPosition p = _converter.ConvertToGridPosition(_enemy.Position);
+            GridPosition p = _converter.ConvertToGridPosition(Enemy.Position);
             bool hasValue = _map.Tiles.TryGetValue(p, out ITile? d);
             if (hasValue)
                 _lastDir = d is not null ? d.TileDirection : null;
@@ -101,8 +100,8 @@ namespace OOP21_task_cSharp.Bedei
 
         private void CheckFinalDestination()
         {
-            double x = _enemy.Position.X;
-            double y = _enemy.Position.Y;
+            double x = Enemy.Position.X;
+            double y = Enemy.Position.Y;
             if (x == -IMG_TILE_SIZE || y == -IMG_TILE_SIZE || this.EndIntoMap(x) || this.EndIntoMap(y))
                 Disappear();
         }
@@ -111,7 +110,7 @@ namespace OOP21_task_cSharp.Bedei
 
         private void CheckLife()
         {
-            if (_enemy.HP <= 0)
+            if (Enemy.HP <= 0)
                 Disappear();
         }
 
@@ -123,6 +122,6 @@ namespace OOP21_task_cSharp.Bedei
 
         public void StopTread() => _threadRun = true;
 
-        public override string ToString() => "EnemyManagerImpl [threadRun=" + _threadRun + ", enemy=" + _enemy + ", lastDir=" + _lastDir + "]";
+        public override string ToString() => "EnemyManagerImpl [threadRun=" + _threadRun + ", enemy=" + Enemy + ", lastDir=" + _lastDir + "]";
     }
 }

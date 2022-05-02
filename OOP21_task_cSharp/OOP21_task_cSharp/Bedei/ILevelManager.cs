@@ -36,7 +36,7 @@ namespace OOP21_task_cSharp.Bedei
         public bool NextWave { get; }
 
         /// <summary>
-        /// riggers the spawning of a new Enemy, using the informations in the current Wave.
+        /// Riggers the spawning of a new Enemy, using the informations in the current Wave.
         /// </summary>
         public IEnemy? CurrentEnemy { get; }
 

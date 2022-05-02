@@ -32,7 +32,7 @@ namespace OOP21_task_cSharp.Bedei
             if (_waveIter.MoveNext())
             {
                 _currentWave = _waveIter.Current;
-                _enemyIter = _waveIter.Current.EnemyList.GetEnumerator();
+                _enemyIter = _waveIter.Current.Wave.GetEnumerator();
             }
             else
                 throw new NotImplementedException();

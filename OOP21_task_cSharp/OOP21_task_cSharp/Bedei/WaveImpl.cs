@@ -2,11 +2,10 @@
 
 namespace OOP21_task_cSharp.Bedei
 {
-    internal class WaveImpl : IWave
+    public class WaveImpl : IWave
     {
-        private readonly List<IEnemy> _wave;
-        List<IEnemy> IWave.EnemyList => _wave;
+        public List<IEnemy> Wave { get; }
 
-        public WaveImpl(List<IEnemy> wave) => _wave = wave;
+        public WaveImpl(List<IEnemy> wave) => Wave = wave;
     }
 }

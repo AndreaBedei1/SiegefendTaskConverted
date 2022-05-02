@@ -59,7 +59,7 @@ namespace OOP21_task_cSharp.Bedei
         public void TestWave()
         {
             IWave wave = WaveCreation();
-            Assert.AreEqual(wave.EnemyList.Count, 1);
+            Assert.AreEqual(wave.Wave.Count, 1);
         }
 
         [TestMethod]

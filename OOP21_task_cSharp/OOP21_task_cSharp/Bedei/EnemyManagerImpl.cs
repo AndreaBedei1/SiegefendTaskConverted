@@ -71,7 +71,7 @@ namespace OOP21_task_cSharp.Bedei
             Enemy.Move(p.X + vec.X * speed, p.Y + vec.Y * speed);
         }
 
-        private Pair<int, int> ToUnitVector(Direction? d) => d switch
+        private static Pair<int, int> ToUnitVector(Direction? d) => d switch
         {
             Direction.Up => Pair<int, int>.From(0, -1),
             Direction.Right => Pair<int, int>.From(1, 0),

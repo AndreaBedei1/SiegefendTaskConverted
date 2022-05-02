@@ -10,6 +10,6 @@ namespace OOP21_task_cSharp.Bedei
         /// <summary>
         /// A list containing all the enemies in the wave.
         /// </summary>
-        List<IEnemy> EnemyList { get; }
+        List<IEnemy> Wave { get; }
     }
 }

@@ -5,34 +5,29 @@ using System.Threading;
 namespace OOP21_task_cSharp.Bedei
 {
     /// <summary>
-    /// This class represents the implementation of the interface link Enemy.
+    /// This class represents the implementation of the Enemy interface.
     /// </summary>
     public class EnemyImpl : IEnemy
     {
-        private readonly Position _position;
-        private double _stepsDone;
-        private double _hp;
-        private readonly double _maxHp;
-        private readonly double _reward;
-        private readonly double _speed;
         private readonly Semaphore _enemySemaphore;
-        private readonly EnemyType _enemyType;
 
-        public double Points => _maxHp * _speed;
+        public double Points => MaxHp * Speed;
 
-        public double PercentHp => _hp / _maxHp;
+        public double PercentHp => HP / MaxHp;
 
-        public Position Position => _position;
+        public Position Position { get; }
 
-        public double Steps => _stepsDone;
+        public double Steps { get; private set; }
 
-        public double HP => _hp;
+        public double HP { get; private set; }
 
-        public double Speed => _speed;
+        public double Speed { get; }
 
-        public EnemyType EnemyType => _enemyType;
+        public EnemyType EnemyType { get; }
 
-        public double Reward => _reward;
+        public double Reward { get; }
+
+        public double MaxHp { get; }
 
 
         /// <summary>
@@ -45,35 +40,35 @@ namespace OOP21_task_cSharp.Bedei
         /// <param name="enemyType">Denotes the type of the Enemy.</param>
         public EnemyImpl(Position position, double hp, double speed, double reward, EnemyType enemyType)
         {
-            _position = new Position(position);
-            _hp = hp;
-            _maxHp = hp;
-            _reward = reward;
-            _speed = speed;
-            _enemyType = enemyType;
+            Position = new Position(position);
+            HP = hp;
+            MaxHp = hp;
+            Reward = reward;
+            Speed = speed;
+            EnemyType = enemyType;
             _enemySemaphore = new Semaphore(1, 1);
         }
 
         public void Move(double x, double y)
         {
-            _position?.SetCoordinates(x, y);
-            _stepsDone++;
+            Position?.SetCoordinates(x, y);
+            Steps++;
         }
 
         public void DamageSuffered(double damage)
         {
             _enemySemaphore?.WaitOne();
-            _hp -= damage;
+            HP -= damage;
             _enemySemaphore?.Release();
         }
 
         public override bool Equals(object? obj) => obj is EnemyImpl impl &&
-            EqualityComparer<Position>.Default.Equals(_position, impl._position) && _enemyType == impl._enemyType;
+            EqualityComparer<Position>.Default.Equals(Position, impl.Position) && EnemyType == impl.EnemyType;
 
-        public override int GetHashCode() => HashCode.Combine(_position, _enemyType);
+        public override int GetHashCode() => HashCode.Combine(Position, EnemyType);
 
-        public override string ToString() => "EnemyImpl [ position=" + _position + ", stepsDone=" + _stepsDone + ", hp=" + _hp + ", maxHp=" + _maxHp
-                + ", hpPercent=" + PercentHp + ", speed=" + _speed + ", enemyType=" + _enemyType + "]";
+        public override string ToString() => "EnemyImpl [ position=" + Position + ", stepsDone=" + Steps + ", hp=" + HP + ", maxHp=" + MaxHp
+                + ", hpPercent=" + PercentHp + ", speed=" + Speed + ", enemyType=" + EnemyType + "]";
 
     }
 }

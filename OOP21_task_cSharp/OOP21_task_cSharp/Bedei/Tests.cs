@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OOP21_task_cSharp.Notaro;
 using System.Collections.Generic;
 
 namespace OOP21_task_cSharp.Bedei
@@ -64,9 +65,10 @@ namespace OOP21_task_cSharp.Bedei
         [TestMethod]
         public void TestLevel()
         {
+            IMap map = new MapImpl();
             List<IWave> waveList = new();
             waveList.Add(WaveCreation());
-            ILevel level = new LevelImpl(waveList, 0);
+            ILevel level = new LevelImpl(waveList, 0, map);
             Assert.AreEqual(level.LevelId, 0);
             Assert.AreEqual(level.NumberOfWaves, 1);
         }
@@ -74,9 +76,10 @@ namespace OOP21_task_cSharp.Bedei
         [TestMethod]
         public void TestLevelManager()
         {
+            IMap map = new MapImpl();
             List<IWave> waveList = new();
             waveList.Add(WaveCreation());
-            ILevel level = new LevelImpl(waveList, 0);
+            ILevel level = new LevelImpl(waveList, 0, map);
             ILevelManager levelManager = new LevelManagerImpl(level);
             Assert.AreEqual(levelManager.Waves, waveList);
             Assert.AreEqual(levelManager.TotalWaves, waveList.Count);

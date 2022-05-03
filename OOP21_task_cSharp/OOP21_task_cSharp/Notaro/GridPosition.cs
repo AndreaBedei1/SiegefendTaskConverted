@@ -22,6 +22,12 @@ namespace OOP21_task_cSharp.Notaro
         }
 
         /// <summary>
+        /// Creates a new instance of <see cref="GridPosition"/> from another instance of GridPosition.
+        /// </summary>
+        /// <param name="gpos">the instance of GridPosition to copy</param>
+        public GridPosition(GridPosition gpos) : this(gpos.Row, gpos.Column) { }
+
+        /// <summary>
         /// Sets new values for both the column and row of the position.
         /// </summary>
         /// <param name="row">The new value for the row.</param>

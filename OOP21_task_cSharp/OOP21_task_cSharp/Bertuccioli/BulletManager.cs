@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOP21_task_cSharp.Gessi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,7 +47,7 @@ namespace OOP21_task_cSharp.Bertuccioli
 
         private void Shift(double x, double y)
         {
-            _bullet.Move(_bullet.GetPosition().X + x, _bullet.GetPosition().Y + y);
+            _bullet.Move(_bullet.Position.X + x, _bullet.Position.Y + y);
         }
 
         private void StartThread()
@@ -58,15 +59,15 @@ namespace OOP21_task_cSharp.Bertuccioli
                 {
                     try
                     {
-                        while (_active && _threadRunning && _bullet != null && _bullet.GetTarget() != null && _bullet.GetTarget().HP > 0)
+                        while (_active && _threadRunning && _bullet != null && _bullet.Target != null && _bullet.Target.HP > 0)
                         {
-                            if (_bullet.GetPosition().DistanceTo(_bullet.GetTargetPosition()) < TOUCH_DISTANCE)
+                            if (_bullet.Position.DistanceTo(_bullet.TargetPosition) < TOUCH_DISTANCE)
                             {
-                                _bullet.GetTarget().DamageSuffered(_bullet.GetDamage());
+                                _bullet.Target.DamageSuffered(_bullet.Damage);
                                 break;
                             }
-                            double directionAngle = _bullet.GetPosition().GetAngle(_bullet.GetTargetPosition());
-                            Shift(Math.Cos(directionAngle) * _bullet.GetSpeed() * deltaTime, Math.Sin(directionAngle) * _bullet.GetSpeed() * deltaTime);
+                            double directionAngle = _bullet.Position.GetAngle(_bullet.Position);
+                            Shift(Math.Cos(directionAngle) * _bullet.Speed * deltaTime, Math.Sin(directionAngle) * _bullet.Speed * deltaTime);
                             Thread.Sleep(UPDATE_DELAY);
                         }
                         Eliminate();

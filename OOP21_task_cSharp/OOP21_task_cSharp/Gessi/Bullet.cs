@@ -12,19 +12,21 @@ namespace OOP21_task_cSharp.Gessi
     /// </summary>
     public class Bullet : IBullet
     {
-        private int _id;
-        private double _speed;
-        private double _damage;
-        private Position _position;
-        private IEnemy _target;
-
+        /// <summary>
+        /// Creates a new instance of Bullet.
+        /// </summary>
+        /// <param name="id">the id of the bullet</param>
+        /// <param name="speed">the speed of the bullet</param>
+        /// <param name="position">the initial position of the bullet</param>
+        /// <param name="damage">the damage of the bullet</param>
+        /// <param name="target">the target of the bullet</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public Bullet(int id, double speed, Position position, double damage, IEnemy target)
         {
             ID = id;
             Speed = speed;
             Position = new Position(position);
             Damage = damage;
-
 
             if(target == null)
             {
@@ -35,13 +37,12 @@ namespace OOP21_task_cSharp.Gessi
                 Target = target;
             }
         }
-
-        public int ID { get => _id; set => _id = value; }
-        public double Speed { get => _speed; set => _speed = value; }
-        public Position Position { get => _position; set => _position = value; }
-        public IEnemy Target { get => _target; set => _target = value; }
+        public int ID { get; set; }
+        public double Speed { get; set; }
+        public Position Position { get; set; }
         public Position TargetPosition { get => Target.Position; }
-        public double Damage { get => _damage; set => _damage = value; }
+        public double Damage { get; set; }
+        public IEnemy Target { get; set; }
         public void Move(double x, double y)
         {
             Position.SetCoordinates(x, y);

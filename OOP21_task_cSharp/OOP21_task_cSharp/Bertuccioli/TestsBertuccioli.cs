@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OOP21_task_cSharp.Bedei;
+using OOP21_task_cSharp.Gessi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,6 +127,11 @@ namespace OOP21_task_cSharp.Bertuccioli
             }
 
             public void SetTarget(IEnemy target)
+            {
+                throw new NotImplementedException();
+            }
+
+            IBullet ITurret.CreateBullet()
             {
                 throw new NotImplementedException();
             }

@@ -47,12 +47,12 @@ namespace OOP21_task_cSharp.Notaro
         {
             try
             {
-                string dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                string file = dir + @"..\..\..\..\mapLevel1.txt";
+                string? dir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                string file = dir + @"..\..\..\..\Notaro\mapLevel"+fileNumber+".txt";
 
                 using (StreamReader sr = new StreamReader(file))
                 {
-                    string line;
+                    string? line;
                     while ((line = sr.ReadLine()) != null)
                     {
                         Read(line);

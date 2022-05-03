@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP21_task_cSharp.Gessi
+﻿namespace OOP21_task_cSharp.Gessi
 {
     /// <summary>
     /// Disclaimer: I didn't originally write this interface, but now I'm going to write it because I need it and I'm going to do it by simply transcribing the code from Java to C#.

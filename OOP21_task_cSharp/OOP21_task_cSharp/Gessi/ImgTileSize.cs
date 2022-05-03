@@ -12,7 +12,7 @@ namespace OOP21_task_cSharp.Gessi
     /// </summary>
     public class ImgTileSize
     {
-        private const int CellSize = 80;
+        private const int CELL_SIZE = 80;
         private ImgTileSize() { }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace OOP21_task_cSharp.Gessi
         /// <returns>image size.</returns>
         public static int GetTileSize()
         {
-            return CellSize;
+            return CELL_SIZE;
         }
     }
 }

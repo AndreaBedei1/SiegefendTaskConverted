@@ -13,7 +13,6 @@ namespace OOP21_task_cSharp.Bertuccioli
     /// </summary>
     public class BulletManager : IBulletManager, IStoppable
     {
-        private readonly IBullet _bullet;
         private readonly IBulletController _bulletController;
         private Thread? _thread;
         private const int UPDATE_DELAY = 20;
@@ -28,16 +27,13 @@ namespace OOP21_task_cSharp.Bertuccioli
         /// </summary>
         public BulletManager(IBullet bullet, IBulletController bulletController)
         {
-            _bullet = bullet;
+            Bullet = bullet;
             _bulletController = bulletController;
             _active = true;
             StartThread();
         }
 
-        public IBullet GetBullet()
-        {
-            return _bullet;
-        }
+        public IBullet Bullet { get; private set; }
 
         public void Eliminate()
         {
@@ -47,7 +43,7 @@ namespace OOP21_task_cSharp.Bertuccioli
 
         private void Shift(double x, double y)
         {
-            _bullet.Move(_bullet.Position.X + x, _bullet.Position.Y + y);
+            Bullet.Move(Bullet.Position.X + x, Bullet.Position.Y + y);
         }
 
         private void StartThread()
@@ -59,15 +55,15 @@ namespace OOP21_task_cSharp.Bertuccioli
                 {
                     try
                     {
-                        while (_active && _threadRunning && _bullet != null && _bullet.Target != null && _bullet.Target.HP > 0)
+                        while (_active && _threadRunning && Bullet != null && Bullet.Target != null && Bullet.Target.HP > 0)
                         {
-                            if (_bullet.Position.DistanceTo(_bullet.TargetPosition) < TOUCH_DISTANCE)
+                            if (Bullet.Position.DistanceTo(Bullet.TargetPosition) < TOUCH_DISTANCE)
                             {
-                                _bullet.Target.DamageSuffered(_bullet.Damage);
+                                Bullet.Target.DamageSuffered(Bullet.Damage);
                                 break;
                             }
-                            double directionAngle = _bullet.Position.GetAngle(_bullet.Position);
-                            Shift(Math.Cos(directionAngle) * _bullet.Speed * deltaTime, Math.Sin(directionAngle) * _bullet.Speed * deltaTime);
+                            double directionAngle = Bullet.Position.GetAngle(Bullet.Position);
+                            Shift(Math.Cos(directionAngle) * Bullet.Speed * deltaTime, Math.Sin(directionAngle) * Bullet.Speed * deltaTime);
                             Thread.Sleep(UPDATE_DELAY);
                         }
                         Eliminate();

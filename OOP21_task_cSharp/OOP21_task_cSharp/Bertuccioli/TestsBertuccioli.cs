@@ -62,90 +62,15 @@ namespace OOP21_task_cSharp.Bertuccioli
             public void SetScore(int score) => Score = score;
         }
 
-        internal class TurretSimple : ITurret
-        {
-            public IBullet CreateBullet()
-            {
-                throw new NotImplementedException();
-            }
-
-            public double GetAngle()
-            {
-                throw new NotImplementedException();
-            }
-
-            public ITurret GetClone()
-            {
-                throw new NotImplementedException();
-            }
-
-            public double GetFireRate()
-            {
-                throw new NotImplementedException();
-            }
-
-            public int GetID()
-            {
-                throw new NotImplementedException();
-            }
-
-            public Position GetPosition()
-            {
-                throw new NotImplementedException();
-            }
-
-            public int GetPrice() => 0;
-
-            public double GetRange()
-            {
-                throw new NotImplementedException();
-            }
-
-            public IEnemy? GetTarget()
-            {
-                throw new NotImplementedException();
-            }
-
-            public bool IsAttacking()
-            {
-                throw new NotImplementedException();
-            }
-
-            public void SetAngle(double angle)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void SetPosition(Position p)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void SetState(bool state)
-            {
-                throw new NotImplementedException();
-            }
-
-            public void SetTarget(IEnemy target)
-            {
-                throw new NotImplementedException();
-            }
-
-            IBullet ITurret.CreateBullet()
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         internal class TurretsLoader : ITurretsLoader
         {
             public IDictionary<int, ITurret> GetTurrets()
             {
                 IDictionary<int, ITurret> dict = new Dictionary<int, ITurret>();
-                dict.Add(0, new TurretSimple());    // Substitute with turret.
-                dict.Add(1, new TurretSimple());
-                dict.Add(2, new TurretSimple());
-                dict.Add(3, new TurretSimple());
+                dict.Add(0, new Turret(0, new Position(10, 10), 10, 10, 10, 10, 10));    // Substitute with turret.
+                dict.Add(1, new Turret(1, new Position(20, 20), 20, 20, 20, 20, 20));
+                dict.Add(2, new Turret(2, new Position(30, 30), 30, 30, 30, 30, 30));
+                dict.Add(3, new Turret(3, new Position(40, 40), 40, 40, 40, 40, 40));
                 return dict;
             }
         }

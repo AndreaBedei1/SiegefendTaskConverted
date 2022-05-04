@@ -16,7 +16,7 @@ namespace OOP21_task_cSharp.Bertuccioli
         /// Returns the <see cref="IBullet"/> associated with the bullet manager.
         /// <returns>a bullet</returns>
         /// </summary>
-        IBullet GetBullet();
+        IBullet Bullet { get; }
 
         /// <summary>
         /// Eliminates the <see cref="IBullet"/> associated with this instance.

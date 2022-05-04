@@ -22,10 +22,10 @@ namespace OOP21_task_cSharp.Gessi
         /// <param name="fireRate">the fire rate of the turret</param>
         /// <param name="bulletSpeed">the speed of the <see cref="IBullet"/></param>
         /// <param name="bulletDamage">the damage of the <see cref="IBullet"/></param>
-        public Turret(int id, Position position, double range, int price, double fireRate, double bulletSpeed, double bulletDamage)
+        public Turret(int id, Position? position, double range, int price, double fireRate, double bulletSpeed, double bulletDamage)
         {
             ID = id;
-            Position = position != null? new Position(position) : null;
+            Position = position != null ? new Position(position) : null;
             Range = range;
             Price = price;
             FireRate = fireRate;
@@ -36,13 +36,13 @@ namespace OOP21_task_cSharp.Gessi
             
         }
         public int ID { get; set; }
-        public Position Position { get; set; }
+        public Position? Position { get; set; }
         public double Range { get; set; }
         public double Angle { get; set; }
         public bool State { get; set; }
         public IBullet? CreateBullet()
         {
-            if (Target != null)
+            if (Target is not null && Position is not null)
             {
                 return _bulletFactory.CreateBullet(ID, _bulletSpeed, Position, _bulletDamage, Target);
             }

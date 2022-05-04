@@ -15,7 +15,7 @@ namespace OOP21_task_cSharp.Gessi
         /// <summary>
         /// The <see cref="Position"/> of the turret.
         /// </summary>
-        Position Position { get; set; }
+        Position? Position { get; set; }
 
         /// <summary>
         /// The range of the turret.

@@ -9,13 +9,13 @@ namespace OOP21_task_cSharp.Gessi
     public interface IShopController
     {
         /// <summary>
-        /// Returns the associated PlayerController.
+        /// Returns the associated <see cref="IPlayerController"/>.
         /// </summary>
-        /// <returns>the associated PlayerController</returns>
+        /// <returns>the associated <see cref="IPlayerController"/></returns>
         IPlayerController GetPlayerManager();
 
         /// <summary>
-        /// Returns a list of ITurret that can be bought from the shop.
+        /// Returns a list of <see cref="ITurret"/> that can be bought from the shop.
         /// </summary>
         /// <returns>a list of turrets</returns>
         List<ITurret> GetTurretList();
@@ -26,14 +26,14 @@ namespace OOP21_task_cSharp.Gessi
         void DeselectTurret();
 
         /// <summary>
-        /// Sets an ITurret as selected.
+        /// Sets an <see cref="ITurret"/> as selected.
         /// </summary>
         /// <param name="t">a turret</param>
         /// <returns>true if the turret was set as selected, false otherwise</returns>
         bool TrySetSelectedTurret(ITurret t);
 
         /// <summary>
-        /// Returns the selected ITurret.
+        /// Returns the selected <see cref="ITurret"/>.
         /// </summary>
         /// <returns>an ITurret</returns>
         ITurret? GetSelectedTurret();
@@ -48,7 +48,7 @@ namespace OOP21_task_cSharp.Gessi
         /// <summary>
         /// Attempts to buy a turret. The method also decreases the money count of the player if the purchase is successful.
         /// </summary>
-        /// <returns>an ITurret if a turret is selected and the player has enough money to buy it, null otherwise</returns>
+        /// <returns>an <see cref="ITurret"/> if a turret is selected and the player has enough money to buy it, null otherwise</returns>
         ITurret? Buy();
     }
 }

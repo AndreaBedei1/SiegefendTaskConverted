@@ -13,7 +13,7 @@ namespace OOP21_task_cSharp.Gessi
         int ID { get; protected set; }
 
         /// <summary>
-        /// The position of the turret.
+        /// The <see cref="Position"/> of the turret.
         /// </summary>
         Position Position { get; set; }
 
@@ -35,7 +35,7 @@ namespace OOP21_task_cSharp.Gessi
         /// <summary>
         /// Creates a new bullet that attacks the targeted enemy.
         /// </summary>
-        /// <returns>an instance of IBullet</returns>
+        /// <returns>an instance of <see cref="IBullet"/></returns>
         IBullet? CreateBullet();
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace OOP21_task_cSharp.Gessi
         /// <summary>
         /// Creates a clone of the turret.
         /// </summary>
-        /// <returns>the cloned ITurret</returns>
+        /// <returns>the cloned <see cref="ITurret"/></returns>
         ITurret GetClone();
     }
 }

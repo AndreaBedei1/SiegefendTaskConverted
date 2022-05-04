@@ -7,7 +7,7 @@
     public interface IPlayerController
     {
         /// <summary>
-        /// Returns the IPlayer associated.
+        /// Returns the <see cref="IPlayer"/> associated.
         /// </summary>
         /// <returns>the player associated</returns>
         IPlayer GetPlayer();

@@ -3,6 +3,9 @@ using OOP21_task_cSharp.Bedei;
 
 namespace OOP21_task_cSharp.Gessi
 {
+    /// <summary>
+    /// Testing class for turrets.
+    /// </summary>
     [TestClass]
     public class TestsGessi
     {

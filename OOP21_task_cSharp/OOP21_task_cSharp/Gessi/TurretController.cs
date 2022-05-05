@@ -35,16 +35,19 @@ namespace OOP21_task_cSharp.Gessi
             _enemyController = enemyController;
             _bulletController = bulletController;
         }
+
         public bool IsTurretSelected()
         {
             return _shopController.GetSelectedTurret() is not null;
         }
+
         public ITurret? GetTurretAt(GridPosition gpos)
         {
             ITurretManager t;
             _turrets.TryGetValue(gpos, out t);
             return t is not null ? (ITurret?)t.Turret : null;
         }
+
         public void AddSelectedTurret(GridPosition gpos)
         {
             if(_shopController.GetSelectedTurret() is not null && IsTileEmpty(gpos))
@@ -60,10 +63,12 @@ namespace OOP21_task_cSharp.Gessi
                 }
             }
         }
+
         public bool IsTileEmpty(GridPosition gpos)
         {
             return !_turrets.ContainsKey(gpos);
         }
+
         private class TurretEnumerator : IEnumerator<KeyValuePair<GridPosition, ITurret>>
         {
             IEnumerator<KeyValuePair<GridPosition, ITurretManager>> _enumerator;
@@ -71,6 +76,7 @@ namespace OOP21_task_cSharp.Gessi
             {
                 _enumerator = enumerator;
             }
+
             public KeyValuePair<GridPosition, ITurret> Current => new KeyValuePair<GridPosition, ITurret>(_enumerator.Current.Key, _enumerator.Current.Value.Turret);
 
             object IEnumerator.Current => Current;
@@ -90,10 +96,12 @@ namespace OOP21_task_cSharp.Gessi
                 _enumerator.Reset();
             }
         }
+
         public IEnumerator<KeyValuePair<GridPosition, ITurret>> GetTurretsEnumerator()
         {
             return new TurretEnumerator(_turrets.GetEnumerator());
         }
+
         public void BulletCreated(IBullet bullet)
         {
             _bulletController.AddBullet(bullet);

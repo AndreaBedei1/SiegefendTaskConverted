@@ -36,10 +36,15 @@ namespace OOP21_task_cSharp.Gessi
             
         }
         public int ID { get; set; }
+
         public Position? Position { get; set; }
+
         public double Range { get; set; }
+
         public double Angle { get; set; }
+
         public bool State { get; set; }
+
         public IBullet? CreateBullet()
         {
             if (Target is not null && Position is not null)
@@ -48,17 +53,23 @@ namespace OOP21_task_cSharp.Gessi
             }
             return null;
         }
+
         public double FireRate { get; set; }
+
         public IEnemy? Target { get; set; }
+
         public int Price { get; set; }
+
         public object Clone()
         {
             return this.MemberwiseClone();
         }
+
         public ITurret GetClone()
         {
             return (ITurret) Clone();
         }
+
         public override int GetHashCode()
         {
             // HashCode.Combine(...) can't take 11 arguments, so I opted for this solution.
@@ -76,6 +87,7 @@ namespace OOP21_task_cSharp.Gessi
             hash.Add(Target);
             return hash.ToHashCode();
         }
+
         public override bool Equals(object? obj)
         {
             if (this == obj)
@@ -100,6 +112,7 @@ namespace OOP21_task_cSharp.Gessi
                     && BitConverter.DoubleToInt64Bits(Range) == BitConverter.DoubleToInt64Bits(other.Range) && State == other.State
                     && Object.Equals(Target, other.Target);
         }
+
         public override string ToString()
         {
             return "Turret [ID=" + ID + ", position=" + Position + ", range=" + Range + ", price=" + Price

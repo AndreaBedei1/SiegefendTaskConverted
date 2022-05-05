@@ -10,6 +10,7 @@ namespace OOP21_task_cSharp.Gessi
         private static readonly Semaphore ENEMY_SEMAPHORE = new Semaphore(1, 1);
         private static readonly Semaphore TURRET_SEMAPHORE = new Semaphore(1, 1);
         private static readonly Semaphore BULLET_SEMAPHORE = new Semaphore(1, 1);
+
         private LockClass() { }
 
         /// <summary>

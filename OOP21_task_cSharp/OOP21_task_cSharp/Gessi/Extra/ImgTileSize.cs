@@ -8,6 +8,7 @@
     public class ImgTileSize
     {
         private const int CELL_SIZE = 80;
+
         private ImgTileSize() { }
 
         /// <summary>

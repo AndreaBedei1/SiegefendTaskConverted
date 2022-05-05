@@ -44,13 +44,21 @@ namespace OOP21_task_cSharp.Gessi
             };
             startTurretThread();
         }
+
         public ITurret Turret { get => _turret; }
+
         public int CurrentUpgradeLevel => throw new NotImplementedException();
+
         public int CurrentUpgradePrice => throw new NotImplementedException();
+
         public int NextUpgradePrice => throw new NotImplementedException();
+
         public ITurret NextUpgrade => throw new NotImplementedException();
+
         public bool CanPurchaseUpgrade => throw new NotImplementedException();
+
         public int Sell() => throw new NotImplementedException();
+
         public void Stop()
         {
             _isThreadRunning = false;
@@ -59,6 +67,7 @@ namespace OOP21_task_cSharp.Gessi
                 _gameThread.Interrupt();
             }
         }
+
 
         /// <summary>
         /// Starts the turret thread.

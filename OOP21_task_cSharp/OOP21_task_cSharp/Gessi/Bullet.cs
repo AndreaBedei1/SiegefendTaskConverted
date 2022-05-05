@@ -34,11 +34,17 @@ namespace OOP21_task_cSharp.Gessi
             }
         }
         public int ID { get; set; }
+
         public double Speed { get; set; }
+
         public Position Position { get; set; }
+
         public Position TargetPosition { get => Target.Position; }
+
         public double Damage { get; set; }
+
         public IEnemy Target { get; set; }
+
         public void Move(double x, double y)
         {
             Position.SetCoordinates(x, y);

@@ -5,6 +5,7 @@ namespace OOP21_task_cSharp.Notaro
     [TestClass]
     public class Tests
     {
+        //Tests on tiles.
         [TestMethod]
         public void TestGrassContainsTurret()
         {
@@ -17,6 +18,8 @@ namespace OOP21_task_cSharp.Notaro
             ITile tile = new TileImpl(TileType.Water);
             Assert.IsFalse(tile.CanContainTurret());
         }
+
+        // Tests on map.
         [TestMethod]
         public void TestCorrectStartTile()
         {

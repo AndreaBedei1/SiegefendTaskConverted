@@ -63,11 +63,13 @@ namespace OOP21_task_cSharp.Notaro
             {
                 Console.WriteLine(ex);
             }
+
             _map.Size = _mapRows;
             if (!_isSetStart || !_isSetEnd) // If the file .txt has no 3 or 4 (start or end tile).
             {       
                 throw new Exception("Given matrix has no start or end tile!");
             }
+
             long numberOfPathTiles = _map.Tiles.Values.AsEnumerable().Count(x => x.TileType == TileType.Path);
             if (numberOfPathTiles == 0)
             {
@@ -101,12 +103,13 @@ namespace OOP21_task_cSharp.Notaro
             }
             _mapRows++;
         }
-        // Method that, by observing the path, fill the field Direction of every tiles in the path.
+        // Method that, by observing the path, fills the field Direction of every tiles in the path.
         private void FindMovementPath()
         {
             GridPosition currentTile = _map.StartTile;  // This algorithm starts from the start of the path.
             HashSet<GridPosition> tilesAlreadyChecked = new HashSet<GridPosition>();    // Contains the tiles already checked, so that we can ignore them.
             Direction? lastDirection = null;    // It saves the last direction set, so we can have the direction also for the very last tile of the path.
+
             // For every tile of the path we check its neighbors to find which one is path. Then, by a simple compare we can set up the field direction of every path tile.
             while (!currentTile.Equals(_map.EndTile))
             {
@@ -143,6 +146,7 @@ namespace OOP21_task_cSharp.Notaro
         {
             int row = tile.Row;
             int column = tile.Column;
+
             // If given grid position isn't into the map's size limits.
             if (row < 0 || column < 0 || row >= _map.Size || column >= _map.Size)
             {

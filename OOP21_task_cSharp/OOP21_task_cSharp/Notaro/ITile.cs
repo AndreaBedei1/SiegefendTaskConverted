@@ -6,7 +6,7 @@
     public interface ITile
     {
         /// <summary>
-        /// Every tile has a propery that describes its type (grass, path, water...).
+        /// Every tile has a property that describes its type (grass, path, water...).
         /// </summary>
         public TileType TileType { get; set; }
         /// <summary>

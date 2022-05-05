@@ -17,9 +17,9 @@ namespace OOP21_task_cSharp.Gessi
         // Since the turrets loader is not implemented (there is just the interface, ITurretsLoader),
         // therefore I can't take the turrets' info from the.json file, I've decided to opt for this solution
         // where I manually take it from the .json file.
-        private ITurret _turret0 = new Turret(0, null, 250.0, 120, 1.2, 150.0, 18.0);
-        private ITurret _turret1 = new Turret(1, null, 250.0, 250, 0.75, 200.0, 50.0);
-        private ITurret _turret2 = new Turret(2, null, 350.0, 400, 1.5, 200.0, 18.0);
+        private static readonly ITurret TURRET0 = new Turret(0, null, 250.0, 120, 1.2, 150.0, 18.0);
+        private static readonly ITurret TURRET1 = new Turret(1, null, 250.0, 250, 0.75, 200.0, 50.0);
+        private static readonly ITurret TURRET2 = new Turret(2, null, 350.0, 400, 1.5, 200.0, 18.0);
 
         /// <summary>
         /// Checks if the price of the turrets is correct.
@@ -27,20 +27,31 @@ namespace OOP21_task_cSharp.Gessi
         [TestMethod, TestCategory("Turret")]
         public void priceTests()
         {
-            Assert.AreEqual(_turret0.Price, _turret0.Price);
-            Assert.AreEqual(_turret1.Price, _turret1.Price);
-            Assert.AreEqual(_turret2.Price, _turret2.Price);
+            Assert.AreEqual(TURRET0.Price, TURRET0_PRICE);
+            Assert.AreEqual(TURRET1.Price, TURRET1_PRICE);
+            Assert.AreEqual(TURRET2.Price, TURRET2_PRICE);
+        }
+
+        [TestInitialize]
+        public void TestInit()
+        {
+             // Given the order in which the tests are automatically performed, it was necessary
+             // to re-set the position of this turret to null.
+             // Why? Because the setPositionTest(), which runs first, sets the turret position
+             // to a specific position which is no longer null.
+             TURRET0.Position = null;
         }
 
         /// <summary>
         /// Checks if the initial position of the turret is correct.
         /// </summary>
+        /// 
         [TestMethod, TestCategory("Turret")]
         public void initialPositionTests()
         {
-            Assert.IsNull(_turret0.Position);
-            Assert.IsNull(_turret1.Position);
-            Assert.IsNull(_turret2.Position);
+            Assert.IsNull(TURRET0.Position);
+            Assert.IsNull(TURRET1.Position);
+            Assert.IsNull(TURRET2.Position);
         }
 
         /// <summary>
@@ -49,8 +60,8 @@ namespace OOP21_task_cSharp.Gessi
         [TestMethod, TestCategory("Turret")]
         public void setPositionTest()
         {
-            _turret0.Position = POSITION;
-            Assert.AreEqual(_turret0.Position, POSITION);
+            TURRET0.Position = POSITION;
+            Assert.AreEqual(TURRET0.Position, POSITION);
         }
 
         /// <summary>
@@ -59,8 +70,8 @@ namespace OOP21_task_cSharp.Gessi
         [TestMethod, TestCategory("Turret")]
         public void getCloneTest()
         {
-            ITurret clone = _turret0.GetClone();
-            Assert.AreEqual(_turret0, clone);
+            ITurret clone = TURRET0.GetClone();
+            Assert.AreEqual(TURRET0, clone);
         }
     }
 }

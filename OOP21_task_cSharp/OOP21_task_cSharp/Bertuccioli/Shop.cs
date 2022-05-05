@@ -26,15 +26,15 @@ namespace OOP21_task_cSharp.Bertuccioli
         {
             CheckNull(p, "player");
             _turrets.TryGetValue(tid, out ITurret? t);
-            return t != null && p.GetMoney() >= t.GetPrice();
+            return t != null && p.GetMoney() >= t.Price;
         }
 
         public bool CanBuy(ITurret t, IPlayer p)
         {
             CheckNull(t, "turret");
             CheckNull(p, "player");
-            _turrets.TryGetValue(t.GetID(), out ITurret? turret);
-            return t.Equals(turret) && CanBuy(t.GetID(), p);        // A check is put in place to verify that not any Turret with a specific
+            _turrets.TryGetValue(t.ID, out ITurret? turret);
+            return t.Equals(turret) && CanBuy(t.ID, p);        // A check is put in place to verify that not any Turret with a specific
         }                                                           // ID can be bought off the shop just because the ID matched one in the Map.
 
         private void CheckNull(object param, string paramName)

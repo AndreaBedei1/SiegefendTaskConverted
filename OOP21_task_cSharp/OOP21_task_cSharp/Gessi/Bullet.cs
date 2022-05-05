@@ -26,7 +26,7 @@ namespace OOP21_task_cSharp.Gessi
 
             if(target == null)
             {
-                throw new ArgumentNullException("target");
+                throw new ArgumentNullException("Target must not be null!");
             }
             else
             {

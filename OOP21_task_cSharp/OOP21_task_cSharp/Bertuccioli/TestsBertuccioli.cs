@@ -1,11 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OOP21_task_cSharp.Bedei;
 using OOP21_task_cSharp.Gessi;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP21_task_cSharp.Bertuccioli
 {
@@ -67,7 +63,7 @@ namespace OOP21_task_cSharp.Bertuccioli
             public IDictionary<int, ITurret> GetTurrets()
             {
                 IDictionary<int, ITurret> dict = new Dictionary<int, ITurret>();
-                dict.Add(0, new Turret(0, new Position(10, 10), 10, 10, 10, 10, 10));    // Substitute with turret.
+                dict.Add(0, new Turret(0, new Position(10, 10), 10, 10, 10, 10, 10));
                 dict.Add(1, new Turret(1, new Position(20, 20), 20, 20, 20, 20, 20));
                 dict.Add(2, new Turret(2, new Position(30, 30), 30, 30, 30, 30, 30));
                 dict.Add(3, new Turret(3, new Position(40, 40), 40, 40, 40, 40, 40));

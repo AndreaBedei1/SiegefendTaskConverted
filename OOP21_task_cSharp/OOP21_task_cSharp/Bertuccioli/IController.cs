@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP21_task_cSharp.Bertuccioli
+﻿namespace OOP21_task_cSharp.Bertuccioli
 {
     /// <summary>
     /// Non-generic base interface for a controller.

@@ -39,7 +39,7 @@ namespace OOP21_task_cSharp.Notaro
         }
 
         // Standard methods to compare grid positions.
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (this == obj) 
             {

@@ -114,7 +114,7 @@ namespace OOP21_task_cSharp.Gessi
                     }
                 }));
             }
-            _gameThread.Start();
+            _gameThread?.Start();
         }
 
         /// <summary>

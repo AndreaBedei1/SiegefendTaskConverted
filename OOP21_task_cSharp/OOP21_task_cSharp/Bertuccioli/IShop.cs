@@ -19,7 +19,7 @@ namespace OOP21_task_cSharp.Bertuccioli
         IList<ITurret> GetAvailableTurrets();
 
         /// <summary>
-        /// Checks whether the <see cref="Turret"/> with the given id can be bought in the shop and if the given {@link Player} has enough money to buy it.
+        /// Checks whether the <see cref="Turret"/> with the given id can be bought in the shop and if the given <see cref="IPlayer"/> has enough money to buy it.
         /// </summary>
         /// <param name="tid">the id of the turret</param>
         /// <param name="p">the player</param>
@@ -27,7 +27,7 @@ namespace OOP21_task_cSharp.Bertuccioli
         bool CanBuy(int tid, IPlayer p);
 
         /// <summary>
-        /// Checks whether the <see cref="Turret"/> can be bought in the shop and if the given {@link Player} has enough money to buy it.
+        /// Checks whether the <see cref="Turret"/> can be bought in the shop and if the given <see cref="IPlayer"/> has enough money to buy it.
         /// </summary>
         /// <param name="t">the turret to buy</param>
         /// <param name="p">the player</param>

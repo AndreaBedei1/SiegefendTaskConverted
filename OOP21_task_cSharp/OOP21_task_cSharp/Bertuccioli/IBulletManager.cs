@@ -14,7 +14,6 @@ namespace OOP21_task_cSharp.Bertuccioli
     {
         /// <summary>
         /// Returns the <see cref="IBullet"/> associated with the bullet manager.
-        /// <returns>a bullet</returns>
         /// </summary>
         IBullet Bullet { get; }
 

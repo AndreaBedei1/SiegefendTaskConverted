@@ -21,7 +21,7 @@ namespace OOP21_task_cSharp.Bertuccioli
         private bool _threadRunning;
 
         /// <summary>
-        /// Creates an instance of the class with the given {@link Bullet}.
+        /// Creates an instance of the class with the given <see cref="IBullet"/>.
         /// <param name "bullet">a bullet</param>
         /// <param name "bulletController">the controller for the bullet view</param>
         /// </summary>

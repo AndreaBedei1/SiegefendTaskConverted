@@ -14,7 +14,7 @@ namespace OOP21_task_cSharp.Bedei
         public List<IWave> Waves { get; }
 
         /// <summary>
-        /// Get the map of the level.
+        /// Gets the map of the level.
         /// </summary>
         public IMap Map { get; }
 

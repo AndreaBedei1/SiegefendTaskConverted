@@ -16,7 +16,7 @@ namespace OOP21_task_cSharp.Bedei
         public IMap Map { get; }
 
         /// <summary>
-        /// The total number of Wave in the Level.
+        /// The total number of Waves in the Level.
         /// </summary>
         public int TotalWaves { get; }
 
@@ -31,12 +31,12 @@ namespace OOP21_task_cSharp.Bedei
         public IWave? CurrentWave { get; }
 
         /// <summary>
-        /// Checks if there is a next ave in the level.
+        /// Checks if there is a next wave in the level.
         /// </summary>
         public bool NextWave { get; }
 
         /// <summary>
-        /// Riggers the spawning of a new Enemy, using the informations in the current Wave.
+        /// Triggers the spawning of a new Enemy, using the informations in the current Wave.
         /// </summary>
         public IEnemy? CurrentEnemy { get; }
 

@@ -3,7 +3,7 @@
     public interface IEnemyManager
     {
         /// <summary>
-        /// Take the enemy.
+        /// Takes the enemy.
         /// </summary>
         public IEnemy Enemy { get; }
 

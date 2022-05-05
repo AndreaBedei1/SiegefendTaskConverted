@@ -54,9 +54,9 @@
         public void Move(double x, double y);
 
         /// <summary>
-        /// Method that decrees the enemy life. 
+        /// Method that decreases the enemy life. 
         /// </summary>
-        /// <param name="damage">Is the damage that the enemy has recived.</param>
+        /// <param name="damage">Is the damage that the enemy has received.</param>
         public void DamageSuffered(double damage);
     }
 }

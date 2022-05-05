@@ -6,15 +6,15 @@
     public enum EnemyType
     {
         /// <summary>
-        /// Represent a tank.
+        /// Represents a tank.
         /// </summary>
         TANK,
         /// <summary>
-        /// Represent a plane.
+        /// Represents a plane.
         /// </summary>
         PLANE,
         /// <summary>
-        /// Represent an Helicopter.
+        /// Represents an Helicopter.
         /// </summary>
         HELICOPTER
     }

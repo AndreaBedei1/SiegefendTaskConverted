@@ -83,7 +83,7 @@ namespace OOP21_task_cSharp.Gessi
                         try
                         {
                             IEnemy? target = Turret.Target;
-                            if(target is null || target.HP <= 0)
+                            if(target is null || target.HP <= 0) // Checks if there is a target and if there is one, it checks its HP
                             {
                                 _bulletTimer.Stop();
                                 findTarget();
@@ -92,9 +92,9 @@ namespace OOP21_task_cSharp.Gessi
                             {
                                 Position? turretPosition = Turret.Position;
                                 Position targetPosition = target.Position;
-                                if(turretPosition is not null && turretPosition.DistanceTo(targetPosition) <= Turret.Range)
+                                if(turretPosition is not null && turretPosition.DistanceTo(targetPosition) <= Turret.Range) // Checks if the target is inside the turret's range
                                 {
-                                    PointToTarget(targetPosition);
+                                    PointToTarget(targetPosition); // Rotation
                                     if (!_bulletTimer.Enabled)
                                     {
                                         _bulletTimer.Start();
